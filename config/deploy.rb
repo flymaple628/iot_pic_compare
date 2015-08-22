@@ -1,9 +1,13 @@
-# config valid only for current version of Capistrano
-lock '3.4.0'
+`ssh-add`
+set :application, 'hackntu_2015_iot_compare'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'git@github.com:flymaple628/iot_pic_compare.git'
+set :deploy_to, '/home/deploy/iot_pic_compare'
+set :keep_releases, 5
+set :linked_files, fetch(:linked_files, []).push('config/database.yml' 'config/secrets.yml')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
 
+set :passenger_restart_with_touch, true
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
