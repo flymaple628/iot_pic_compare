@@ -2,12 +2,14 @@ module.paths.push('/usr/local/lib/node_modules');
 var querystring = require('querystring');
 var http = require('http');
 
+
 var data = querystring.stringify({
       data: "yourUsernameValue"
     });
 
 var options = {
-    host: 'iot_pic_compare.enjoymaple.com',
+    host: 'localhost',
+    // host: 'iot_pic_compare.enjoymaple.com',
     port: 80,
     path: '/test_datas',
     method: 'POST',
