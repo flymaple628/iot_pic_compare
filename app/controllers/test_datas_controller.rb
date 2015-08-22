@@ -15,9 +15,14 @@ class TestDatasController < ApiController
 
 	def create
 		data = params[:data]
+		# render :json=>data
 
-		test_data=Test.create(:test_data=>data)
-		redirect_to test_datas_path
+		data_url = data
+		png      = Base64.decode64(data_url['data:image/png;base64,'.length .. -1])
+		File.open('/public/test.png', 'wb') { |f| f.write(png) }
+		# test_data=Test.create(:test_data=>data)
+		test_data=Test.create(:test_data=>png)
+		# redirect_to test_datas_path
 	end
 
 	def data_paramas
