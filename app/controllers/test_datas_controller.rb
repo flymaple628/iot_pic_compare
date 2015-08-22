@@ -13,6 +13,12 @@ class TestDatasController < ApiController
 		redirect_to test_datas_path
 	end
 
+	def create
+		data = params[:data]
+
+		test_data=Test.create(:test_data=>data)
+		redirect_to test_datas_path
+	end
 
 	def data_paramas
 	end
