@@ -24,6 +24,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "mini_magick"
+
+gem 'chunky_png', '~> 1.3.4'
+
+gem 'capistrano-rails', :group => :development
+gem 'capistrano-passenger', :group => :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
