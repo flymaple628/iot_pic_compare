@@ -1,9 +1,9 @@
 class PicturesController < ApiController
 
 	def index
-		image = MiniMagick::Image.open("public/1.jpg")
-		image2 = MiniMagick::Image.open("public/1.jpg")
-		@html = image.compare(image2)
+		# image = MiniMagick::Image.open("public/1.jpg")
+		# image2 = MiniMagick::Image.open("public/1.jpg")
+		# @html = image.compare(image2)
 		#讀取所有的原本圖片
 		origin_records = Dir.glob("public/origin/*")
 		#判斷所以的圖片是不是有成立
