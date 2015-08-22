@@ -1,13 +1,21 @@
 class PicturesController < ApiController
 
-	def index
+	def create
 		# image = MiniMagick::Image.open("public/1.jpg")
 		# image2 = MiniMagick::Image.open("public/1.jpg")
 		# @html = image.compare(image2)
 		#讀取所有的原本圖片
 		origin_records = Dir.glob("public/origin/*")
 		#判斷所以的圖片是不是有成立
-		receive = jpg_to_png("public/8.jpg")
+		# receive = jpg_to_png("public/8.jpg")
+		if(File.exist?('temp.png'))
+			File.delete('temp.png')
+		end
+
+		File.open('temp.png', 'w+') {|f|
+    	f.puts Base64.decode64(Base64.decode64(base_64_encoded_data))
+		}
+		receive = jpg_to_png("temp.png")
 		is_match = {:is_match =>false}
 		origin_records.each do |origin|
 
