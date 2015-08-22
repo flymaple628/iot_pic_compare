@@ -1,7 +1,7 @@
 class TestDatasController < ApiController
 
 	def index
-		test_data=Test.all
+		test_data=Test.all.order(id: :desc)
 
 		render :json=>test_data.to_json
 	end
