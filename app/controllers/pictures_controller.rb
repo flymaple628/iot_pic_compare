@@ -1,5 +1,11 @@
 class PicturesController < ApiController
 
+	def index
+		show=CheckResult.all.order(id: :desc)
+
+		render :json=>show
+	end
+
 	def create
 		# name = params[:upload][:image].original_filename
 		name = "temp.png"
@@ -26,7 +32,7 @@ class PicturesController < ApiController
 		receive = "public/temp.png"
 		# receive = jpg_to_png("temp.png")
 
-		is_match = {:is_match =>false}
+		is_match = {:is_match => false}
 		origin_records.each do |origin|
 
 			# pic_compare(jpg_to_png("public/7.jpg"),jpg_to_png("public/8.jpg"))
@@ -43,6 +49,13 @@ class PicturesController < ApiController
 		#資料判斷
 		# pic_compare(jpg_to_png("public/7.jpg"),jpg_to_png("public/8.jpg"))
 		# jpg_to_png("public/7.jpg")
+		reslt=CheckResult.create(
+						:result=> is_match[:is_match],
+						:account=>params[:upload][:name],
+						:pixels_total	=>@compare_result[:pixels_total],
+						:pixels_changed=>@compare_result[:pixels_changed],
+						:pixels_changed_percen=>@compare_result[:pixels_changed_percen]
+					)
 		render :json =>is_match
 	end
 

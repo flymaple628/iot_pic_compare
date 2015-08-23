@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822120108) do
+ActiveRecord::Schema.define(version: 20150823004239) do
 
   create_table "check_results", force: :cascade do |t|
     t.string   "account"
     t.boolean  "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "pixels_total"
+    t.string   "pixels_changed"
+    t.string   "pixels_changed_percen"
   end
 
   create_table "tests", force: :cascade do |t|
